@@ -51,8 +51,7 @@ def minimo(lista):
     """Encuentra el número mínimo de una lista."""
     if not lista:
         raise ValueError("La lista no puede estar vacía")
-    # BUG 2: No maneja correctamente la comparación inicial
-    min_val = 0
+    min_val = lista[0]
     for num in lista:
         if num < min_val:
             min_val = num
