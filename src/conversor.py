@@ -67,8 +67,7 @@ def kilometros_a_millas(kilometros):
     """Convierte kilómetros a millas."""
     if kilometros < 0:
         raise ValueError("La distancia no puede ser negativa")
-    # BUG 2: Fórmula incorrecta (multiplica en lugar de dividir)
-    return kilometros * 1.60934
+    return kilometros / 1.60934
 
 def pies_a_metros(pies):
     """Convierte pies a metros."""
