@@ -42,13 +42,14 @@ def csv_a_diccionarios(contenido_csv, tiene_cabecera=True):
         datos = lineas[1:]
 
         resultado = []
-        for fila in datos:
-            # BUG 2: No maneja filas con diferente número de columnas
-            fila_dict = {}
-            for i, valor in enumerate(fila):
-                if i < len(cabeceras):
-                    fila_dict[cabeceras[i]] = valor
-            resultado.append(fila_dict)
+        for numero, fila in enumerate(datos, start=2):
+            if len(fila) > len(cabeceras):
+                raise ValueError(
+                    f"La fila {numero} tiene {len(fila)} columnas y la cabecera solo {len(cabeceras)}"
+                )
+            # Las columnas faltantes se completan con cadena vacía
+            fila_completa = fila + [""] * (len(cabeceras) - len(fila))
+            resultado.append(dict(zip(cabeceras, fila_completa)))
 
         return resultado
 
