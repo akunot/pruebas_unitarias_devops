@@ -11,10 +11,9 @@ def parse_csv_line(linea):
     if not linea:
         return []
 
-    # Manejar comillas
+    # Manejar comillas (comas dentro de campos y comillas escapadas "")
     if '"' in linea:
-        # BUG 1: No maneja correctamente comillas anidadas o escapadas
-        return linea.split(',')
+        return next(csv.reader(StringIO(linea)))
 
     return linea.split(',')
 
