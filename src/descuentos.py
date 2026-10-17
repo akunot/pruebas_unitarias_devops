@@ -38,9 +38,8 @@ def calcular_precio_final(precio, impuesto, descuento):
     # Primero aplicar el descuento
     precio_con_descuento = aplicar_descuento(precio, descuento)
 
-    # Luego aplicar el impuesto
-    # BUG 1: El impuesto se aplica incorrectamente
-    impuesto_monto = precio * (impuesto / 100)
+    # Luego aplicar el impuesto sobre el precio ya descontado
+    impuesto_monto = precio_con_descuento * (impuesto / 100)
     precio_final = precio_con_descuento + impuesto_monto
 
     return precio_final
