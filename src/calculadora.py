@@ -27,7 +27,8 @@ def potencia(base, exponente):
 
 def raiz_cuadrada(numero):
     """Calcula la raíz cuadrada de un número."""
-    # BUG 1: No maneja números negativos
+    if numero < 0:
+        raise ValueError("No se puede calcular la raíz cuadrada de un número negativo")
     return numero ** 0.5
 
 def promedio(lista):
